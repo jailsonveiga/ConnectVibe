@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 //Listening for request
 @RestController
@@ -32,5 +34,12 @@ public class WaitressController {
         Waitress waitress = waitressRepository.save(newWaitress);
 
         return new ResponseEntity<>(waitress, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<Waitress>> getAllWaitress() {
+        List<Waitress> waitress = waitressRepository.findAll();
+
+        return new ResponseEntity<>(waitress, HttpStatus.OK);
     }
 }
