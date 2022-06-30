@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
+@SuppressWarnings("ALL")
 @CrossOrigin
 //Listening for request
 @RestController
@@ -41,5 +43,18 @@ public class WaitressController {
         List<Waitress> waitress = waitressRepository.findAll();
 
         return new ResponseEntity<>(waitress, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getWaitressById(@PathVariable Long id) {
+        Optional<Waitress> waitress = waitressRepository.findById(id);
+
+        if (waitress.isEmpty()) {
+
+            return new ResponseEntity("Not Found", HttpStatus.NOT_FOUND);
+
+        }
+
+        return new ResponseEntity<>(waitress.get(), HttpStatus.OK);
     }
 }
