@@ -16,13 +16,13 @@ public class Waitress {
     private Long waitressId;
     private String waitressName;
     private String waitressSection;
-    private Integer waitressTable;
+    private Byte waitressTable;
 
     public Waitress() {
     }
 
     //Constructor
-    public Waitress(Long waitressId, String waitressName, String waitressSection, Integer waitressTable) {
+    public Waitress(Long waitressId, String waitressName, String waitressSection, Byte waitressTable) {
         this.waitressId = waitressId;
         this.waitressName = waitressName;
         this.waitressSection = waitressSection;
@@ -54,11 +54,11 @@ public class Waitress {
         this.waitressSection = waitressSection;
     }
 
-    public Integer getWaitressTable() {
+    public Byte getWaitressTable() {
         return waitressTable;
     }
 
-    public void setWaitressTable(Integer waitressTable) {
+    public void setWaitressTable(Byte waitressTable) {
         this.waitressTable = waitressTable;
     }
 }
