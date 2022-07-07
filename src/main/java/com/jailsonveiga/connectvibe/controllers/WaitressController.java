@@ -22,6 +22,7 @@ public class WaitressController {
 
     @GetMapping("/test")
     public ResponseEntity<String> testRoute() {
+
         return new ResponseEntity<>("Testing the End point", HttpStatus.OK);
     }
 
@@ -31,27 +32,34 @@ public class WaitressController {
     //Update = PUT*POST
     //Delete = DELETE
 
-    @PostMapping("/")
+    @PostMapping("/") //Create Waitress
     public ResponseEntity<Waitress> createWaitress(@RequestBody Waitress newWaitress) {
         Waitress waitress = waitressRepository.save(newWaitress);
 
         return new ResponseEntity<>(waitress, HttpStatus.CREATED);
     }
 
-    @GetMapping("/")
+    @PutMapping("/")
+    public ResponseEntity<Waitress> updateWaitress(@RequestBody Waitress newUpdateWaitress) {
+        Waitress waitress = waitressRepository.save(newUpdateWaitress);
+
+        return new ResponseEntity<>(waitress, HttpStatus.OK);
+    }
+
+    @GetMapping("/") //Get all Waitress
     public ResponseEntity<List<Waitress>> getAllWaitress() {
         List<Waitress> waitress = waitressRepository.findAll();
 
         return new ResponseEntity<>(waitress, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //Get Waitress by Id
     public ResponseEntity<?> getWaitressById(@PathVariable Long id) {
         Optional<Waitress> waitress = waitressRepository.findById(id);
 
         if (waitress.isEmpty()) {
 
-            return new ResponseEntity("Not Found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity("Id Not Found", HttpStatus.NOT_FOUND);
 
         }
 
