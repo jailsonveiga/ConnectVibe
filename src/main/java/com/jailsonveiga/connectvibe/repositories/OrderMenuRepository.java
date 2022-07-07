@@ -1,4 +1,4 @@
 package com.jailsonveiga.connectvibe.repositories;
 
-public interface OrderMenu {
+public interface OrderMenuRepository {
 }
