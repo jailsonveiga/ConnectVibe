@@ -15,16 +15,21 @@ public class Waitress {
     //Properties
     private Long waitressId;
     private String waitressName;
+    private String waitressGender;
+    private Integer waitressAge;
     private String waitressSection;
     private Byte waitressTable;
 
+    //Default Constructor
     public Waitress() {
     }
 
     //Constructor
-    public Waitress(Long waitressId, String waitressName, String waitressSection, Byte waitressTable) {
+    public Waitress(Long waitressId, String waitressName, String waitressGender, Integer waitressAge, String waitressSection, Byte waitressTable) {
         this.waitressId = waitressId;
         this.waitressName = waitressName;
+        this.waitressGender = waitressGender;
+        this.waitressAge = waitressAge;
         this.waitressSection = waitressSection;
         this.waitressTable = waitressTable;
     }
@@ -44,6 +49,22 @@ public class Waitress {
 
     public void setWaitressName(String waitressName) {
         this.waitressName = waitressName;
+    }
+
+    public String getWaitressGender() {
+        return waitressGender;
+    }
+
+    public void setWaitressGender(String waitressGender) {
+        this.waitressGender = waitressGender;
+    }
+
+    public Integer getWaitressAge() {
+        return waitressAge;
+    }
+
+    public void setWaitressAge(Integer waitressAge) {
+        this.waitressAge = waitressAge;
     }
 
     public String getWaitressSection() {
