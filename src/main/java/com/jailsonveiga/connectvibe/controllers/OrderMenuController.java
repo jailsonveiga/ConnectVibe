@@ -48,4 +48,11 @@ public class OrderMenuController {
         return new ResponseEntity<>(ordermenu, HttpStatus.OK);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<OrderMenu> getOrderMenuById(@PathVariable Long id) {
+        OrderMenu ordermenu = orderMenuRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        return new ResponseEntity<>(ordermenu, HttpStatus.OK);
+    }
 }
