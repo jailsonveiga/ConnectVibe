@@ -48,10 +48,18 @@ public class OrderMenuController {
         return new ResponseEntity<>(ordermenu, HttpStatus.OK);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<OrderMenu> getOrderMenuById(@PathVariable Long id) {
         OrderMenu ordermenu = orderMenuRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        return new ResponseEntity<>(ordermenu, HttpStatus.OK);
+    }
+
+    @GetMapping("/restaurant/{restaurantId}")
+    public ResponseEntity<List<OrderMenu>> getOrderMenuByRestaurant(@PathVariable Long restaurantId) {
+
+        List<OrderMenu> ordermenu = orderMenuRepository.findAllByRestaurant_restaurantId(restaurantId);
 
         return new ResponseEntity<>(ordermenu, HttpStatus.OK);
     }
