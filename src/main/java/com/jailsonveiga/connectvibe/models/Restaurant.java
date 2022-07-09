@@ -1,6 +1,8 @@
 package com.jailsonveiga.connectvibe.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,6 +17,7 @@ public class Restaurant {
     private String restaurantPhone;
 
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<OrderMenu> ordermenus;
 
     //Default Constructor
