@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/ordermenus")
@@ -37,6 +39,13 @@ public class OrderMenuController {
         OrderMenu orderMenu = orderMenuRepository.save(newOrderMenu);
 
         return new ResponseEntity<>(orderMenu, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<OrderMenu>> getAllOrderMenu() {
+        List<OrderMenu> ordermenu = orderMenuRepository.findAll();
+
+        return new ResponseEntity<>(ordermenu, HttpStatus.OK);
     }
 
 }
